@@ -6,7 +6,7 @@
     <!-- small box -->
     <div class="small-box bg-aqua">
       <div class="inner">
-        <h3>150</h3>
+        <h3>{{$users->count()}}</h3>
 
         <p>Usuarios registrados</p>
       </div>
@@ -82,11 +82,12 @@
       <!-- /.box-header -->
       <div class="box-body no-padding">
         <ul class="users-list clearfix">
+          @foreach ($users as $user)
           <li>
-            @foreach ($users as $user)
             <img src="{{ Gravatar::get($user->email)}}" style="width:128px; height:128px;" class="online" alt="User Image">
-            <a class="users-list-name" href="#">{{$user->name}}</a> @endforeach
+            <a class="users-list-name" href="#">{{$user->name}}</a>
           </li>
+          @endforeach
         </ul>
         <!-- /.users-list -->
       </div>
@@ -116,7 +117,7 @@
         <ul class="products-list product-list-in-box">
           <li class="item">
             <div class="product-img">
-              <a class="btn btn-info" href="#" aria-label="Ver">
+              <a class="btn btn-primary" href="#" aria-label="Ver">
                 <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
               </a>
             </div>

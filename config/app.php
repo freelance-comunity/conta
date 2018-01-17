@@ -182,6 +182,10 @@ return [
 
         Creativeorange\Gravatar\GravatarServiceProvider::class,
 
+        Roland\Crud\CrudServiceProvider::class,
+
+        Collective\Html\HtmlServiceProvider::class,
+
     ],
 
     /*
@@ -232,6 +236,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
+
+        'Form' => Collective\Html\FormFacade::class,
+
+        'HTML' => Collective\Html\HtmlFacade::class,
 
     ],
 

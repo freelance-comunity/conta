@@ -22,3 +22,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['web']], function () {
+	Route::resource('admin/users', 'Admin\\UsersController');
+});
+Route::group(['middleware' => ['web']], function () {
+	Route::resource('admin/roles', 'Admin\\RolesController');
+  Route::get('permisos', 'Admin\\RolesController@permisos');
+});

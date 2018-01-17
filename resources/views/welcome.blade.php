@@ -1,3 +1,12 @@
+<style media="screen">
+#particles-js {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+          }
+</style>
 @extends('adminlte::master')
 
 @section('adminlte_css')
@@ -69,8 +78,8 @@
         </div>
         <!-- /.login-box-body -->
     </div><!-- /.login-box -->
+{{-- <div id="particles-js"></div> --}}
 @stop
-
 @section('adminlte_js')
     <script src="{{ asset('vendor/adminlte/plugins/iCheck/icheck.min.js') }}"></script>
     <script>
@@ -82,5 +91,12 @@
             });
         });
     </script>
+    {{-- <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+        particlesJS.load('particles-js', 'js/particlesjs-config.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+    </script> --}}
     @yield('js')
 @stop
