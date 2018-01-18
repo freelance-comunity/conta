@@ -8,12 +8,14 @@
         "php": ">=7.0.0",
         "creativeorange/gravatar": "~1.0",
         "fideloper/proxy": "~3.3",
+        "jenssegers/date": "^3.2",
         "jeroennoten/laravel-adminlte": "^1.22",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5",
         "roland/crud": "dev-master",
-        "spatie/laravel-permission": "^2.7"
+        "spatie/laravel-permission": "^2.7",
+        "unisharp/laravel-ckeditor": "^4.7"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

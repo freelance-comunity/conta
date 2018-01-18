@@ -47,7 +47,7 @@ class RolesController extends Controller
 
         Role::create($request->all());
 
-        Session::flash('message', 'Role added!');
+        Session::flash('message', 'Rol agregado.');
         Session::flash('status', 'success');
 
         return redirect('admin/roles');
@@ -102,7 +102,7 @@ class RolesController extends Controller
             $role->syncPermissions($permissions);
 
             //flash($role->name . ' permissions has been updated.');
-            Session::flash('message', 'Permissions has been updated.');
+            Session::flash('message', 'Los permisos han sido actualizados.');
             Session::flash('status', 'success');
         } else {
             Session::flash('message', 'Rol no encontrado.');
@@ -125,7 +125,7 @@ class RolesController extends Controller
 
         $role->delete();
 
-        Session::flash('message', 'Role deleted!');
+        Session::flash('message', 'Rol eliminado!');
         Session::flash('status', 'success');
 
         return redirect('admin/roles');

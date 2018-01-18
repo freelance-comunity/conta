@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     /*
@@ -13,7 +12,7 @@ return [
     |
     */
 
-    'title' => 'SicoSE',
+    'title' => 'SiSE',
 
     'title_prefix' => '',
 
@@ -30,9 +29,9 @@ return [
     |
     */
 
-    'logo' => '<b>Sico</b>SE',
+    'logo' => '<b>Si</b>SE',
 
-    'logo_mini' => '<b>S</b>CE',
+    'logo_mini' => '<b>S</b>SE',
 
     /*
     |--------------------------------------------------------------------------
@@ -125,7 +124,7 @@ return [
         ],
         [
             'text'        => 'Casos',
-            'url'         => 'admin/case',
+            'url'         => 'admin/pending',
             'icon'        => 'book',
             // 'label'       => 4,
             'label_color' => 'success',
@@ -138,18 +137,9 @@ return [
                     'text' => 'Roles',
                     'url'  => 'admin/roles',
                 ],
-                [
-                    'text' => 'Permisos',
-                    'url'  => '#',
-                ],
             ],
         ],
         'AJUSTES DE CUENTA',
-        [
-            'text' => 'Perfil',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
         [
             'text' => 'Cambiar contraseña',
             'url'  => 'admin/settings',

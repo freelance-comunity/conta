@@ -1,4 +1,4 @@
-@extends('adminlte::page') @section('title', 'AdminLTE') @section('content_header')
+@extends('adminlte::page') @section('title', 'Inicio') @section('content_header')
 <h1>Inicio</h1> @stop @section('content')
 <!-- Small boxes (Stat box) -->
 <div class="row">
@@ -92,11 +92,6 @@
         <!-- /.users-list -->
       </div>
       <!-- /.box-body -->
-      {{--
-      <div class="box-footer text-center">
-        <a href="javascript:void(0)" class="uppercase">View All Users</a>
-      </div>
-      <!-- /.box-footer -->--}}
     </div>
     <!--/.box -->
   </div>

@@ -123,7 +123,7 @@ class UsersController extends Controller
         $roles = Role::pluck('name', 'id');
         $permissions = Permission::all('name', 'id');
 
-        return view('backEnd.admin.users.edit', compact('user','roles', 'permissions'));
+        return view('backEnd.admin.users.edit', compact('user', 'roles', 'permissions'));
     }
 
     /**
@@ -144,7 +144,7 @@ class UsersController extends Controller
         $user->fill($request->except('roles', 'permissions', 'password'));
 
         // check for password change
-        if($request->get('password')) {
+        if ($request->get('password')) {
             $user->password = bcrypt($request->get('password'));
         }
 
@@ -168,20 +168,38 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-      if ( Auth::user()->id == $id ) {
-        Session::flash('message', 'La eliminación del usuario actualmente conectado no está permitida :(');
-        Session::flash('status', 'success');
-          return redirect()->back();
-      }
+        if (Auth::user()->id == $id) {
+            Session::flash('message', 'La eliminación del usuario actualmente conectado no está permitida :(');
+            Session::flash('status', 'success');
+            return redirect()->back();
+        }
 
-      if( User::findOrFail($id)->delete() ) {
-        Session::flash('message', 'Usuario eliminado.');
-        Session::flash('status', 'success');
-      } else {
-        Session::flash('message', 'Usuario no eliminado.');
-        Session::flash('status', 'success');
-      }
+        if (User::findOrFail($id)->delete()) {
+            Session::flash('message', 'Usuario eliminado.');
+            Session::flash('status', 'success');
+        } else {
+            Session::flash('message', 'Usuario no eliminado.');
+            Session::flash('status', 'success');
+        }
 
+        return redirect()->back();
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('backEnd.admin.users.profile')
+      ->with('user', $user);
+    }
+
+    public function updateProfile(Request $request)
+    {
+      $this->validate($request, ['password' => 'required|string|min:6|confirmed', ]);
+      $user = Auth::user();
+      $user->password = bcrypt($request->get('password'));
+      $user->save();
+      Session::flash('message', 'Actualizaste tu contraseña exitosamente.');
+      Session::flash('status', 'success');
       return redirect()->back();
     }
 }

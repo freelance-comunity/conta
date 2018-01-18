@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Mexico_City',
 
     /*
     |--------------------------------------------------------------------------
@@ -186,6 +186,10 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
 
+        Unisharp\Ckeditor\ServiceProvider::class,
+
+        'Jenssegers\Date\DateServiceProvider',
+
     ],
 
     /*
@@ -240,6 +244,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
 
         'HTML' => Collective\Html\HtmlFacade::class,
+
+        'Date' => Jenssegers\Date\Date::class,
 
     ],
 
