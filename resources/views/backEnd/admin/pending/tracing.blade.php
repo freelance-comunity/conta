@@ -20,10 +20,11 @@
           {!! Form::label('affair', 'Tipo de nota: ') !!} {!! Form::select('type',['ACUERDO' => 'ACUERDO', 'OBSERVACIÓN' => 'OBSERVACIÓN'], null, ['class' => 'form-control input-lg', 'required' => 'required']) !!} {!! $errors->first('type', '
           <p class="help-block">:message</p>') !!}
         </div>
-<input type="hidden" name="pending_id" value="{{$pending->id}}">
+        <input type="hidden" name="pending_id" value="{{$pending->id}}">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button> {{-- <button type="button" class="btn btn-primary">Guardar</button> --}} {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!} {!! Form::close()
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button> {{-- <button type="button" class="btn btn-primary">Guardar</button> --}}
+        {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!} {!! Form::close()
         !!}
       </div>
     </div>

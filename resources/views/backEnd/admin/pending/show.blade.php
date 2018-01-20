@@ -61,13 +61,7 @@
             </div>
 
             <div class="timeline-footer">
-              {!! Form::open([
-                  'method'=>'DELETE',
-                  'url' => ['admin/tracing', $element->id],
-                  'style' => 'display:inline'
-              ]) !!}
-                  {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs']) !!}
-              {!! Form::close() !!}
+              {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/tracing', $element->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs']) !!} {!! Form::close() !!}
             </div>
           </div>
         </li>

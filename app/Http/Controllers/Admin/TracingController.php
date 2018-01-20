@@ -57,10 +57,6 @@ class TracingController extends Controller
         $tracings = $pending->tracings;
 
         return view('backEnd.admin.pending.show', compact('pending', 'peoples', 'tracings'));
-        // Session::flash('message', 'Tracing added!');
-        // Session::flash('status', 'success');
-        //
-        // return redirect('admin/tracing');
     }
 
     /**

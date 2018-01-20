@@ -25,14 +25,14 @@
     <div class="form-group {{ $errors->has('phone') ? 'has-error' : ''}}">
       {!! Form::label('phone', 'Teléfono: ', ['class' => 'col-sm-3 control-label']) !!}
       <div class="col-sm-6">
-        {!! Form::text('phone', null, ['class' => 'form-control input-lg']) !!} {!! $errors->first('phone', '
+        {!! Form::text('phone', null, ['class' => 'form-control input-lg', 'required']) !!} {!! $errors->first('phone', '
         <p class="help-block">:message</p>') !!}
       </div>
     </div>
     <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
       {!! Form::label('email', 'Correo electrónico: ', ['class' => 'col-sm-3 control-label']) !!}
       <div class="col-sm-6">
-        {!! Form::email('email', null, ['class' => 'form-control input-lg']) !!} {!! $errors->first('email', '
+        {!! Form::email('email', null, ['class' => 'form-control input-lg', 'required']) !!} {!! $errors->first('email', '
         <p class="help-block">:message</p>') !!}
       </div>
     </div>

@@ -190,6 +190,8 @@ return [
 
         'Jenssegers\Date\DateServiceProvider',
 
+        Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class,
+
     ],
 
     /*
@@ -246,6 +248,8 @@ return [
         'HTML' => Collective\Html\HtmlFacade::class,
 
         'Date' => Jenssegers\Date\Date::class,
+
+        'GoogleCalendar' => Spatie\GoogleCalendar\GoogleCalendarFacade::class,
 
     ],
 

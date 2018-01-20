@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Pending;
 use App\Calendar;
+use Spatie\GoogleCalendar\Event;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -35,8 +37,19 @@ class HomeController extends Controller
 
     public function calendar()
     {
-      $calendars = Calendar::all();
-      return view('calendar')
+        $calendars = Calendar::all();
+        return view('calendar')
       ->with('calendars', $calendars);
+    }
+
+    public function createEvent()
+    {
+        $event = new Event;
+
+        $event->name = 'A new event';
+        $event->startDateTime = Carbon::now();
+        $event->endDateTime = Carbon::now()->addHour();
+
+        $event->save();
     }
 }

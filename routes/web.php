@@ -24,6 +24,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('admin/viewcalendar', 'HomeController@calendar');
+Route::get('admin/createEvent', 'HomeController@createEvent');
 
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('admin/users', 'Admin\\UsersController');
