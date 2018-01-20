@@ -109,6 +109,21 @@ return [
     'menu' => [
         'MENÚ PRINCIPAL',
         [
+            'text'        => 'Casos',
+            'url'         => 'admin/pending',
+            'icon'        => 'book',
+            // 'label'       => 4,
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Calendario',
+            'url'         => 'admin/viewcalendar',
+            'icon'        => 'calendar',
+            // 'label'       => 4,
+            'label_color' => 'success',
+        ],
+        'AJUSTES DE SISTEMA',
+        [
             'text'        => 'Usuarios',
             'url'         => 'admin/users',
             'icon'        => 'users',
@@ -123,20 +138,6 @@ return [
             'label_color' => 'success',
         ],
         [
-            'text'        => 'Casos',
-            'url'         => 'admin/pending',
-            'icon'        => 'book',
-            // 'label'       => 4,
-            'label_color' => 'success',
-        ],
-        [
-            'text'        => 'Calendario',
-            'url'         => 'admin/viewcalendar',
-            'icon'        => 'calendar',
-            // 'label'       => 4,
-            'label_color' => 'success',
-        ],
-        [
             'text'    => 'Seguridad',
             'icon'    => 'shield',
             'submenu' => [
@@ -146,7 +147,6 @@ return [
                 ],
             ],
         ],
-        'AJUSTES DE CUENTA',
         [
             'text' => 'Cambiar contraseña',
             'url'  => 'admin/settings',
@@ -157,57 +157,19 @@ return [
             'url'  => 'admin/calendar',
             'icon' => 'wrench',
         ],
+        // 'ETIQUETAS',
         // [
-        //     'text'    => 'Multilevel',
-        //     'icon'    => 'share',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'Level One',
-        //             'url'  => '#',
-        //         ],
-        //         [
-        //             'text'    => 'Level One',
-        //             'url'     => '#',
-        //             'submenu' => [
-        //                 [
-        //                     'text' => 'Level Two',
-        //                     'url'  => '#',
-        //                 ],
-        //                 [
-        //                     'text'    => 'Level Two',
-        //                     'url'     => '#',
-        //                     'submenu' => [
-        //                         [
-        //                             'text' => 'Level Three',
-        //                             'url'  => '#',
-        //                         ],
-        //                         [
-        //                             'text' => 'Level Three',
-        //                             'url'  => '#',
-        //                         ],
-        //                     ],
-        //                 ],
-        //             ],
-        //         ],
-        //         [
-        //             'text' => 'Level One',
-        //             'url'  => '#',
-        //         ],
-        //     ],
+        //     'text'       => 'Important',
+        //     'icon_color' => 'red',
         // ],
-        'ETIQUETAS',
-        [
-            'text'       => 'Important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
-        ],
+        // [
+        //     'text'       => 'Warning',
+        //     'icon_color' => 'yellow',
+        // ],
+        // [
+        //     'text'       => 'Information',
+        //     'icon_color' => 'aqua',
+        // ],
     ],
 
     /*
