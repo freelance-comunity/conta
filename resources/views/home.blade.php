@@ -65,7 +65,7 @@
 </div>
 <!-- /.row -->
 <div class="row">
-  <div class="col-md-6">
+  {{-- <div class="col-md-6">
     <!-- USERS LIST -->
     <div class="box box-default">
       <div class="box-header with-border">
@@ -95,7 +95,7 @@
     </div>
     <!--/.box -->
   </div>
-  <!-- /.col -->
+  <!-- /.col --> --}}
   <div class="col-md-6">
     <div class="box box-primary">
       <div class="box-header with-border">
