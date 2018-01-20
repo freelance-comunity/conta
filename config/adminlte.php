@@ -109,6 +109,13 @@ return [
     'menu' => [
         'MENÚ PRINCIPAL',
         [
+            'text'        => 'Inicio',
+            'url'         => '/home',
+            'icon'        => 'home',
+            // 'label'       => 4,
+            'label_color' => 'success',
+        ],
+        [
             'text'        => 'Casos',
             'url'         => 'admin/pending',
             'icon'        => 'book',
