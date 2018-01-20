@@ -13,7 +13,7 @@
           <p class="help-block">:message</p>') !!}
         </div>
         <div class="form-group col-sm-6 col-lg-12 {{ $errors->has('affair') ? 'has-error' : ''}}">
-          {!! Form::label('affair', 'Quien observa: ') !!} {!! Form::select('people', $peoples,null, ['class' => 'form-control input-lg', 'required' => 'required']) !!} {!! $errors->first('people', '
+          {!! Form::label('affair', 'Quien observa: ') !!} {!! Form::text('people',null, ['class' => 'form-control input-lg', 'required' => 'required']) !!} {!! $errors->first('people', '
           <p class="help-block">:message</p>') !!}
         </div>
         <div class="form-group col-sm-6 col-lg-12 {{ $errors->has('affair') ? 'has-error' : ''}}">
