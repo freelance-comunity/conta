@@ -194,12 +194,13 @@ class UsersController extends Controller
 
     public function updateProfile(Request $request)
     {
-      $this->validate($request, ['password' => 'required|string|min:6|confirmed', ]);
-      $user = Auth::user();
-      $user->password = bcrypt($request->get('password'));
-      $user->save();
-      Session::flash('message', 'Actualizaste tu contraseña exitosamente.');
-      Session::flash('status', 'success');
-      return redirect()->back();
+        $this->validate($request, ['password' => 'required|string|min:6|confirmed', ]);
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('password'));
+        $user->save();
+        Session::flash('message', 'Actualizaste tu contraseña exitosamente.');
+        Session::flash('status', 'success');
+        return redirect()->back();
     }
+
 }

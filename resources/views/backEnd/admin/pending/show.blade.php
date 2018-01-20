@@ -1,14 +1,14 @@
 @extends('backLayout.app') @section('title') {{$pending->affair}} @stop @section('content')
 <div class="box">
   <div class="box-header">
-    <h3 class="box-title">Caso</h3>
+    <h3 class="box-title"></h3>
   </div>
   <!-- /.box-header -->
   <div class="box-body">
     <div class="table table-responsive">
       <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
-          <thead>
+          <thead class="bg-blue">
             <tr>
               <th>ID.</th>
               <th>Caso de</th>
@@ -20,7 +20,7 @@
             <tr>
               <td>{{ $pending->id }}</td>
               <td> {{ $pending->owner }} </td>
-              <td> {{ $pending->affair }} </td>
+              <td> <strong>{{ $pending->affair }}</strong> </td>
               <td> {{ $pending->status }} </td>
             </tr>
           </tbody>
@@ -54,14 +54,20 @@
           <div class="timeline-item">
             <span class="time"><i class="fa fa-clock-o"></i> {{ Date::parse($element->created_at)->format('H:i:s')}}</span>
 
-            <h3 class="timeline-header"><a href="#">{{$element->people}}</a></h3>
+            <h3 class="timeline-header"><a href="#">{{$element->people}} ({{$element->type}})</a></h3>
 
             <div class="timeline-body">
               {!! $element->body !!}
             </div>
 
             <div class="timeline-footer">
-              <a class="btn bg-purple btn-xs">{{$element->type}}</a>
+              {!! Form::open([
+                  'method'=>'DELETE',
+                  'url' => ['admin/tracing', $element->id],
+                  'style' => 'display:inline'
+              ]) !!}
+                  {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs']) !!}
+              {!! Form::close() !!}
             </div>
           </div>
         </li>

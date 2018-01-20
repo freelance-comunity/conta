@@ -21,7 +21,7 @@
     <!-- small box -->
     <div class="small-box bg-green">
       <div class="inner">
-        <h3>53</h3>
+        <h3>{{$pendings->count()}}</h3>
 
         <p>Casos en proceso</p>
       </div>
@@ -36,7 +36,7 @@
     <!-- small box -->
     <div class="small-box bg-yellow">
       <div class="inner">
-        <h3>44</h3>
+        <h3>0</h3>
 
         <p>Casos finalizados</p>
       </div>
@@ -110,27 +110,29 @@
       <!-- /.box-header -->
       <div class="box-body">
         <ul class="products-list product-list-in-box">
+        @foreach ($pendings as $element)
           <li class="item">
             <div class="product-img">
-              <a class="btn btn-primary" href="#" aria-label="Ver">
+              <a class="btn btn-primary" href="{{ url('admin/pending', $element->id) }}" aria-label="Ver">
                 <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
               </a>
             </div>
             <div class="product-info">
-              <a href="javascript:void(0)" class="product-title">Seguimiento caso número 1
-                <span class="label label-warning pull-right">2018-01-16</span></a>
+              <a href="{{ url('admin/pending', $element->id) }}" class="product-title">{{$element->owner}}
+                <span class="label label-success pull-right">{{ Date::parse($element->created_at)->format('l j F Y')}}</span></a>
               </a>
               <span class="product-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    {{$element->affair}}
                   </span>
             </div>
           </li>
           <!-- /.item -->
+        @endforeach
         </ul>
       </div>
       <!-- /.box-body -->
       <div class="box-footer text-center">
-        <a href="javascript:void(0)" class="uppercase">Ver todos</a>
+        <a href="{{url('admin/pending')}}" class="uppercase">Ver todos</a>
       </div>
       <!-- /.box-footer -->
     </div>

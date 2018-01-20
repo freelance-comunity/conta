@@ -30,7 +30,7 @@
             <td><a href="{{ url('admin/users', $item->id) }}">{{ $item->name }}</a></td>
             <td>{{ $item->email }}</td>
             <td>{{ $item->roles->implode('name', ', ') }}</td>
-            <td>{{ $item->created_at->toFormattedDateString() }}</td>
+            <td>{{ Date::parse($item->created_at)->format('l j F Y')}}</td>
             <td>
               @can('editar_usuarios')
               <a href="{{ url('admin/users/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Actualizar</a>

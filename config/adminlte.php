@@ -130,6 +130,13 @@ return [
             'label_color' => 'success',
         ],
         [
+            'text'        => 'Calendario',
+            'url'         => 'admin/viewcalendar',
+            'icon'        => 'calendar',
+            // 'label'       => 4,
+            'label_color' => 'success',
+        ],
+        [
             'text'    => 'Seguridad',
             'icon'    => 'shield',
             'submenu' => [
@@ -144,6 +151,11 @@ return [
             'text' => 'Cambiar contraseña',
             'url'  => 'admin/settings',
             'icon' => 'lock',
+        ],
+        [
+            'text' => 'Ajustes calendario',
+            'url'  => 'admin/calendar',
+            'icon' => 'wrench',
         ],
         // [
         //     'text'    => 'Multilevel',

@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Jenssegers\Date\Date;
 
-class Person extends Model
+class Calendar extends Model
 {
 
     /**
@@ -14,20 +13,16 @@ class Person extends Model
      *
      * @var string
      */
-    protected $table = 'people';
+    protected $table = 'calendars';
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'last_name', 'phone', 'email'];
+    protected $fillable = ['body'];
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];
 
-    public function pendings()
-    {
-        return $this->hasMany('App\Pending');
-    }
 }

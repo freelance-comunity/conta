@@ -23,6 +23,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('admin/viewcalendar', 'HomeController@calendar');
+
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('admin/users', 'Admin\\UsersController');
   Route::get('admin/settings', 'Admin\\UsersController@profile');
@@ -42,4 +44,8 @@ Route::group(['middleware' => ['web']], function () {
 });
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('admin/tracing', 'Admin\\TracingController');
+});
+
+Route::group(['middleware' => ['web']], function () {
+	Route::resource('admin/calendar', 'Admin\\CalendarController');
 });
