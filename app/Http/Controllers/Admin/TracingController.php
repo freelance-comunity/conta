@@ -49,8 +49,8 @@ class TracingController extends Controller
         $pending = Pending::findOrFail($request->input('pending_id'));
 
         $input = $request->all();
-        $people = User::findOrFail($request->input('people'));
-        $input['people'] = $people->name;
+        // $people = User::findOrFail($request->input('people'));
+        $input['people'] = $request->input('people');
         Tracing::create($input);
 
         $peoples = User::pluck('name', 'id');
