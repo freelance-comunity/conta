@@ -1,4 +1,4 @@
-@extends('backLayout.app') @section('title') Create new Person @stop @section('content')
+@extends('backLayout.app') @section('title') Crear Nueva Persona @stop @section('content')
 <hr/>
 <div class="box">
   <div class="box-header">
