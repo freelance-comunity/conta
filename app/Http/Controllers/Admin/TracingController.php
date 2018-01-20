@@ -55,8 +55,10 @@ class TracingController extends Controller
 
         $peoples = User::pluck('name', 'id');
         $tracings = $pending->tracings;
-
-        return view('backEnd.admin.pending.show', compact('pending', 'peoples', 'tracings'));
+        Session::flash('message', 'Se agrego correctamente el seguimiento.');
+        Session::flash('status', 'success');
+        // return view('backEnd.admin.pending.show', compact('pending', 'peoples', 'tracings'));
+        return redirect('admin/pending');
     }
 
     /**
