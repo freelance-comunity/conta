@@ -1,4 +1,8 @@
-@extends('backLayout.app') @section('title') {{$pending->affair}} @stop @section('content')
+@extends('backLayout.app') @section('title') {{$pending->affair}} @stop @section('content') @if(session()->has('message'))
+<div class="alert alert-success alert-dismissable">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session()->get('message') }}
+</div>
+@endif
 <div class="box">
   <div class="box-header">
     <h3 class="box-title"></h3>
@@ -61,7 +65,8 @@
             </div>
 
             <div class="timeline-footer">
-              {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/tracing', $element->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs']) !!} {!! Form::close() !!}
+              {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/tracing', $element->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("¿Estas seguro de eliminar este registro?")'])
+              !!} {!! Form::close() !!}
             </div>
           </div>
         </li>

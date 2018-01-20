@@ -17,7 +17,7 @@ use App\Tracing;
 
 class PendingController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -93,8 +93,10 @@ class PendingController extends Controller
     public function edit($id)
     {
         $pending = Pending::findOrFail($id);
-
-        return view('backEnd.admin.pending.edit', compact('pending'));
+        $peoples = Person::select(
+            DB::raw("CONCAT(name,' ',last_name) AS name"),'id')
+            ->pluck('name', 'id');
+        return view('backEnd.admin.pending.edit', compact('pending', 'peoples'));
     }
 
     /**
@@ -111,7 +113,7 @@ class PendingController extends Controller
         $pending = Pending::findOrFail($id);
         $pending->update($request->all());
 
-        Session::flash('message', 'Pending updated!');
+        Session::flash('message', 'Caso actualizado.');
         Session::flash('status', 'success');
 
         return redirect('admin/pending');
@@ -130,7 +132,7 @@ class PendingController extends Controller
 
         $pending->delete();
 
-        Session::flash('message', 'Pending deleted!');
+        Session::flash('message', 'Caso eliminado.');
         Session::flash('status', 'success');
 
         return redirect('admin/pending');

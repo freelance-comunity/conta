@@ -120,10 +120,10 @@ class TracingController extends Controller
 
         $tracing->delete();
 
-        Session::flash('message', 'Tracing deleted!');
+        Session::flash('message', 'Elemento eliminado del historial.');
         Session::flash('status', 'success');
 
-        return redirect('admin/tracing');
+        return redirect()->back();
     }
 
 }

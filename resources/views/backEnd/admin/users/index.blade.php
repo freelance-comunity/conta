@@ -37,7 +37,7 @@
               @endcan
               @can('eliminar_usuarios')
               {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/users', $item->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar', ['class'
-              => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("¿Estas seguro de eliminar este usuario?")']) !!} {!! Form::close() !!}
+              => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("¿Estas seguro de eliminar este registro?")']) !!} {!! Form::close() !!}
               @endcan
             </td>
           </tr>

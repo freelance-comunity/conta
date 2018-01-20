@@ -30,7 +30,7 @@
             <td>{{ $item->status }}</td>
             <td>
               <a href="{{ url('admin/pending/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Actualizar</a> {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/pending', $item->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar',
-              ['class' => 'btn btn-danger btn-xs']) !!} {!! Form::close() !!}
+              ['class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("¿Estas seguro de eliminar este registro?")']) !!} {!! Form::close() !!}
               <a href="{{ url('admin/pending', $item->id) }}" class="btn btn-success btn-xs">Ver</a>
             </td>
           </tr>

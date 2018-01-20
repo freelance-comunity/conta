@@ -34,7 +34,7 @@
             <td>{{ Date::parse($item->created_at)->format('l j F Y')}}</td>
             <td>
               <a href="{{ url('admin/people/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Actualizar</a> {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/people', $item->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar',
-              ['class' => 'btn btn-danger btn-xs']) !!} {!! Form::close() !!}
+              ['class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("¿Estas seguro de eliminar este registro?")']) !!} {!! Form::close() !!}
             </td>
           </tr>
           @endforeach
