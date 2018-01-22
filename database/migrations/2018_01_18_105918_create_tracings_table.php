@@ -17,6 +17,7 @@ class CreateTracingsTable extends Migration
             $table->text('body');
             $table->string('people');
             $table->string('type');
+            $table->string('fulfilled')->default('NO');
             $table->integer('pending_id')->unsigned();
             $table->foreign('pending_id')->references('id')->on('pendings')->onDelete('cascade');
 
