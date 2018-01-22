@@ -31,6 +31,7 @@ class HomeController extends Controller
         $users = User::all();
         $pendings = Pending::where('status', 'EN PROCESO');
         $terminates = Pending::where('status', 'TERMINADO');
+
         return view('home')
         ->with('users', $users)
         ->with('pendings', $pendings)

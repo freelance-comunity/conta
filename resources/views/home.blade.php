@@ -13,7 +13,7 @@
       <div class="icon">
         <i class="fa fa-user-plus"></i>
       </div>
-      <a href="#" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{url('admin/users')}}" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
@@ -28,7 +28,7 @@
       <div class="icon">
         <i class="fa fa-hourglass-end"></i>
       </div>
-      <a href="#" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{url('admin/pending')}}" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
@@ -43,7 +43,7 @@
       <div class="icon">
         <i class="fa fa-archive"></i>
       </div>
-      <a href="#" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{url('admin/pending')}}" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
