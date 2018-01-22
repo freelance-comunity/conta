@@ -36,7 +36,7 @@
     <!-- small box -->
     <div class="small-box bg-yellow">
       <div class="inner">
-        <h3>0</h3>
+        <h3>{{$terminates->count()}}</h3>
 
         <p>Casos finalizados</p>
       </div>

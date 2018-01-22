@@ -29,10 +29,12 @@ class HomeController extends Controller
     public function index()
     {
         $users = User::all();
-        $pendings = Pending::all();
+        $pendings = Pending::where('status', 'EN PROCESO');
+        $terminates = Pending::where('status', 'TERMINADO');
         return view('home')
         ->with('users', $users)
-        ->with('pendings', $pendings);
+        ->with('pendings', $pendings)
+        ->with('terminates', $terminates);
     }
 
     public function calendar()
