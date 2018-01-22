@@ -3,7 +3,7 @@
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session()->get('message') }}
 </div>
 @endif
-<h1>Casos <a href="{{ url('admin/pending/create') }}" class="btn btn-primary pull-right btn-sm">Agregar Nuevo Caso</a></h1>
+<h1>Casos @can('agregar_casos')<a href="{{ url('admin/pending/create') }}" class="btn btn-primary pull-right btn-sm">Agregar Nuevo Caso</a>@endcan</h1>
 <div class="box">
   <div class="box-header">
     <h3 class="box-title"></h3>
@@ -29,8 +29,13 @@
             <td>{{ $item->affair }}</td>
             <td>{{ $item->status }}</td>
             <td>
-              <a href="{{ url('admin/pending/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Actualizar</a> {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/pending', $item->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar',
-              ['class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("¿Estas seguro de eliminar este registro?")']) !!} {!! Form::close() !!}
+              @can ('editar_casos')
+                <a href="{{ url('admin/pending/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Actualizar</a>
+              @endcan
+              @can ('eliminar_casos')
+                {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/pending', $item->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar',
+               ['class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("¿Estas seguro de eliminar este registro?")']) !!} {!! Form::close() !!}
+              @endcan
               <a href="{{ url('admin/pending', $item->id) }}" class="btn btn-success btn-xs">Ver</a>
             </td>
           </tr>

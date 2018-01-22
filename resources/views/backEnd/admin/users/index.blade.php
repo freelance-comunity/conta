@@ -4,7 +4,7 @@
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session()->get('message') }}
   </div>
   @endif
-<h1>Usuarios <a href="{{ url('admin/users/create') }}" class="btn btn-primary pull-right btn-sm">Agregar Nuevo Usuario</a></h1>
+<h1>Usuarios @can('agregar_usuarios') <a href="{{ url('admin/users/create') }}" class="btn btn-primary pull-right btn-sm">Agregar Nuevo Usuario</a>@endcan</h1>
 <div class="box">
   <div class="box-header">
     <h3 class="box-title"></h3>
