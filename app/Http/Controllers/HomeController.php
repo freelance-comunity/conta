@@ -8,6 +8,7 @@ use App\Pending;
 use App\Calendar;
 use Spatie\GoogleCalendar\Event;
 use Carbon\Carbon;
+use Activity;
 
 class HomeController extends Controller
 {
@@ -31,11 +32,13 @@ class HomeController extends Controller
         $users = User::all();
         $pendings = Pending::where('status', 'EN PROCESO');
         $terminates = Pending::where('status', 'TERMINADO');
+        $activities = Activity::users()->get();
 
         return view('home')
         ->with('users', $users)
         ->with('pendings', $pendings)
-        ->with('terminates', $terminates);
+        ->with('terminates', $terminates)
+         ->with('activities', $activities);
     }
 
     public function calendar()

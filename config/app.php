@@ -192,6 +192,10 @@ return [
 
         Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class,
 
+        Barryvdh\DomPDF\ServiceProvider::class,
+
+        Kim\Activity\ActivityServiceProvider::class,
+
     ],
 
     /*
@@ -250,6 +254,10 @@ return [
         'Date' => Jenssegers\Date\Date::class,
 
         'GoogleCalendar' => Spatie\GoogleCalendar\GoogleCalendarFacade::class,
+
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+
+        'Activity' => Kim\Activity\ActivityFacade::class,
 
     ],
 

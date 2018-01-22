@@ -1,5 +1,4 @@
-@extends('adminlte::page') @section('title', 'Inicio')
-@section('content')
+@extends('adminlte::page') @section('title', 'Inicio') @section('content')
 <!-- Small boxes (Stat box) -->
 <div class="row">
   <div class="col-lg-3 col-xs-6">
@@ -46,56 +45,43 @@
       <a href="{{url('admin/pending')}}" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
-  <!-- ./col -->
-  {{-- <div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-red">
-      <div class="inner">
-        <h3>65</h3>
-
-        <p>Mensajes</p>
-      </div>
-      <div class="icon">
-        <i class="fa fa-commenting-o"></i>
-      </div>
-      <a href="#" class="small-box-footer">Ver <i class="fa fa-arrow-circle-right"></i></a>
-    </div>
-  </div>
-  <!-- ./col --> --}}
 </div>
 <!-- /.row -->
 <div class="row">
-  {{-- <div class="col-md-6">
+  <div class="col-md-6">
     <!-- USERS LIST -->
-    <div class="box box-default">
+    <div class="box box-success">
       <div class="box-header with-border">
-        <h3 class="box-title">Usuarios en linea</h3>
+        <h3 class="box-title">Usuarios en Linea</h3>
 
         <div class="box-tools pull-right">
-          <span class="label label-success">{{$users->count()}} en linea</span>
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-          </button>
+          <span class="label label-success">{{ $activities->count() }} en linea</span>
+          <button type="button" class="btn btn-box-tool" data-widget="collapse">
+  						<i class="fa fa-minus"></i>
+  					</button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove">
+  						<i class="fa fa-times"></i>
+  					</button>
         </div>
       </div>
       <!-- /.box-header -->
       <div class="box-body no-padding">
         <ul class="users-list clearfix">
-          @foreach ($users as $user)
+          @foreach ($activities as $activity) @if ($activity->user->id > 2)
           <li>
-            <img src="{{ Gravatar::get($user->email)}}" style="width:128px; height:128px;" class="online" alt="User Image">
-            <a class="users-list-name" href="#">{{$user->name}}</a>
+            {{-- <img src="{{asset('/uploads/avatars')}}/{{ $activity->user->avatar }}" alt="User Image" class="online"> --}}
+            <img src="{{ Gravatar::get($activity->user->email)}}" style="width:128px; height:128px;" class="online" alt="User Image">
+            <a class="users-list-name" href="#">{{ $activity->user->name }}</a> {{--
+            <span class="users-list-date">{{ Carbon\Carbon::now() }}</span> --}}
           </li>
-          @endforeach
+          @endif @endforeach
         </ul>
         <!-- /.users-list -->
       </div>
-      <!-- /.box-body -->
     </div>
     <!--/.box -->
   </div>
-  <!-- /.col --> --}}
+  <!-- /.col -->
   <div class="col-md-6">
     <div class="box box-primary">
       <div class="box-header with-border">
@@ -110,7 +96,7 @@
       <!-- /.box-header -->
       <div class="box-body">
         <ul class="products-list product-list-in-box">
-        @foreach ($pendings as $element)
+          @foreach ($pendings as $element)
           <li class="item">
             <div class="product-img">
               <a class="btn btn-primary" href="{{ url('admin/pending', $element->id) }}" aria-label="Ver">
@@ -127,7 +113,7 @@
             </div>
           </li>
           <!-- /.item -->
-        @endforeach
+          @endforeach
         </ul>
       </div>
       <!-- /.box-body -->

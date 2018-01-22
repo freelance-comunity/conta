@@ -103,10 +103,16 @@ class TracingController extends Controller
         $tracing = Tracing::findOrFail($id);
         $tracing->update($request->all());
 
-        Session::flash('message', 'Tracing updated!');
-        Session::flash('status', 'success');
+        $search = $tracing->pending;
+        $id_pending = $search->id;
 
-        return redirect('admin/tracing');
+        $pending = Pending::findOrFail($id_pending);
+        $peoples = User::pluck('name', 'id');
+        $tracings = $pending->tracings;
+
+        Session::flash('message', 'Se edito correctamente.');
+        Session::flash('status', 'success');
+        return view('backEnd.admin.pending.show', compact('pending', 'peoples', 'tracings'));
     }
 
     /**

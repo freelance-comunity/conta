@@ -14,6 +14,7 @@ use DB;
 use App\People;
 use App\User;
 use App\Tracing;
+use PDF;
 
 class PendingController extends Controller
 {
@@ -144,13 +145,22 @@ class PendingController extends Controller
 
     public function terminatePending($id)
     {
-      $pending = Pending::findOrFail($id);
-      $pending->status = 'TERMINADO';
-      $pending->save();
+        $pending = Pending::findOrFail($id);
+        $pending->status = 'TERMINADO';
+        $pending->save();
 
-      Session::flash('message', 'Caso terminado.');
-      Session::flash('status', 'success');
+        Session::flash('message', 'Caso terminado.');
+        Session::flash('status', 'success');
 
-      return redirect()->back();
+        return redirect()->back();
+    }
+
+    public function pdf($id)
+    {
+        $pending = Pending::findOrFail($id);
+        $tracings = $pending->tracings;
+
+        $pdf = PDF::loadView('backEnd.admin.pending.pdf', compact('pending', 'tracings'))->setPaper('a4', 'landscape');
+        return $pdf->download('reporte.pdf');
     }
 }

@@ -29,8 +29,9 @@
               <td> {{ $pending->status }}</td>
               <td>
                 @if ($pending->status === 'TERMINADO')
-                <a href="{{url('terminatePending')}}/{{$pending->id}}" class="btn btn-danger disabled">Terminar caso</a> @else
+                @else
                 <a href="{{url('terminatePending')}}/{{$pending->id}}" class="btn btn-danger">Terminar caso</a> @endif
+                <a href="{{url('pdf')}}/{{$pending->id}}" class="btn btn-success"><i class="fa fa-file-pdf-o"></i> Descargar</a>
               </td>
             </tr>
           </tbody>
@@ -76,11 +77,15 @@
             </div>
 
             <div class="timeline-footer">
+              <a href="{{ url('admin/tracing/' . $element->id . '/edit') }}" class="btn btn-primary btn-xs">Editar</a>
               {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/tracing', $element->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("¿Estas seguro de eliminar este registro?")'])
-              !!} {!! Form::close() !!} @if ($element->fulfilled === 'SI')
-              <a href="{{url('terminate')}}/{{$element->id}}" class="btn btn-warning btn-xs disabled" onclick="return confirm('¿Estas seguro de terminar esta actividad?')">Terminar</a> @else
+              !!} {!! Form::close() !!}
+              @if ($element->fulfilled === 'SI')
+              @else
               <a href="{{url('terminate')}}/{{$element->id}}" class="btn btn-warning btn-xs" onclick="return confirm('¿Estas seguro de terminar esta actividad?')">Terminar</a> @endif
+              @if ($element->fulfilled === 'NO')
               <button class="btn btn-success btn-xs" type="button" name="button">Tiempo transcurrido: {{ Date::parse($element->created_at)->ago()}}</button>
+              @endif
             </div>
           </div>
         </li>
