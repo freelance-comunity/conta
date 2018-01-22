@@ -1,5 +1,5 @@
-@extends('adminlte::page') @section('title', 'Inicio') @section('content_header')
-<h1>Inicio</h1> @stop @section('content')
+@extends('adminlte::page') @section('title', 'Inicio')
+@section('content')
 <!-- Small boxes (Stat box) -->
 <div class="row">
   <div class="col-lg-3 col-xs-6">

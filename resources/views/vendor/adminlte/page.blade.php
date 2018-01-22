@@ -108,9 +108,9 @@
             @endif
 
             <!-- Content Header (Page header) -->
-            <section class="content-header">
+            {{-- <section class="content-header">
                 @yield('content_header')
-            </section>
+            </section> --}}
 
             <!-- Main content -->
             <section class="content">
