@@ -45,6 +45,7 @@ Route::group(['middleware' => ['web']], function () {
 });
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('admin/tracing', 'Admin\\TracingController');
+  Route::get('terminate/{id}', 'Admin\\TracingController@terminate');
 });
 
 Route::group(['middleware' => ['web']], function () {

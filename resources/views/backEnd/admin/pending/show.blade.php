@@ -58,7 +58,7 @@
           <div class="timeline-item">
             <span class="time"><i class="fa fa-clock-o"></i> {{ Date::parse($element->created_at)->format('H:i:s')}}</span>
 
-            <h3 class="timeline-header"><a href="#">{{$element->people}} ({{$element->type}})</a></h3>
+            <h3 class="timeline-header"><a href="#">{{$element->people}} ({{$element->type}})</a> <b>Terminado: {{$element->fulfilled}}</b></h3>
 
             <div class="timeline-body">
               {!! $element->body !!}
@@ -67,6 +67,12 @@
             <div class="timeline-footer">
               {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/tracing', $element->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("¿Estas seguro de eliminar este registro?")'])
               !!} {!! Form::close() !!}
+              @if ($element->fulfilled === 'SI')
+                <a href="{{url('terminate')}}/{{$element->id}}" class="btn btn-warning btn-xs disabled" onclick="return confirm('¿Estas seguro de terminar esta actividad?')">Terminar</a>
+              @else
+              <a href="{{url('terminate')}}/{{$element->id}}" class="btn btn-warning btn-xs" onclick="return confirm('¿Estas seguro de terminar esta actividad?')">Terminar</a>
+              @endif
+              <button class="btn btn-success btn-xs" type="button" name="button">Tiempo transcurrido: {{ Date::parse($element->created_at)->ago()}}</button>
             </div>
           </div>
         </li>

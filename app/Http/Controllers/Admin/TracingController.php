@@ -128,4 +128,15 @@ class TracingController extends Controller
         return redirect()->back();
     }
 
+    public function terminate($id)
+    {
+      $tracing = Tracing::findOrFail($id);
+      $tracing->fulfilled = 'SI';
+      $tracing->save();
+
+      Session::flash('message', 'Actividad actualizada.');
+      Session::flash('status', 'success');
+
+      return redirect()->back();
+    }
 }
