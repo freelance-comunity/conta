@@ -42,6 +42,7 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('admin/pending', 'Admin\\PendingController');
+  Route::get('terminatePending/{id}', 'Admin\\PendingController@terminatePending');
 });
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('admin/tracing', 'Admin\\TracingController');

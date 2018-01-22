@@ -18,6 +18,7 @@
               <th>Caso de</th>
               <th>Asunto</th>
               <th>Estatus</th>
+              <th>Detalles</th>
             </tr>
           </thead>
           <tbody>
@@ -25,7 +26,12 @@
               <td>{{ $pending->id }}</td>
               <td> {{ $pending->owner }} </td>
               <td> <strong>{{ $pending->affair }}</strong> </td>
-              <td> {{ $pending->status }} </td>
+              <td> {{ $pending->status }}</td>
+              <td>
+                @if ($pending->status === 'TERMINADO')
+                <a href="{{url('terminatePending')}}/{{$pending->id}}" class="btn btn-danger disabled">Terminar caso</a> @else
+                <a href="{{url('terminatePending')}}/{{$pending->id}}" class="btn btn-danger">Terminar caso</a> @endif
+              </td>
             </tr>
           </tbody>
         </table>
@@ -37,10 +43,15 @@
   <hr>
   <div class="row">
     <div class="col-md-12">
-      <h1>Historial <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+      <h1>Historial
+      @if ($pending->status === 'TERMINADO')
+
+      @else
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
         Agregar Seguimiento
-      </button></h1> @include('backEnd.admin.pending.tracing') @if ($tracings->isEmpty())
-      <div class="well text-center">Ho hay seguimiento a este caso.</div> @else @foreach ($tracings as $element)
+      </button>
+      @endif</h1> @include('backEnd.admin.pending.tracing') @if ($tracings->isEmpty())
+      <div class="well text-center">No hay seguimiento a este caso.</div> @else @foreach ($tracings as $element)
       <ul class="timeline">
 
         <!-- timeline time label -->
@@ -66,12 +77,9 @@
 
             <div class="timeline-footer">
               {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/tracing', $element->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("¿Estas seguro de eliminar este registro?")'])
-              !!} {!! Form::close() !!}
-              @if ($element->fulfilled === 'SI')
-                <a href="{{url('terminate')}}/{{$element->id}}" class="btn btn-warning btn-xs disabled" onclick="return confirm('¿Estas seguro de terminar esta actividad?')">Terminar</a>
-              @else
-              <a href="{{url('terminate')}}/{{$element->id}}" class="btn btn-warning btn-xs" onclick="return confirm('¿Estas seguro de terminar esta actividad?')">Terminar</a>
-              @endif
+              !!} {!! Form::close() !!} @if ($element->fulfilled === 'SI')
+              <a href="{{url('terminate')}}/{{$element->id}}" class="btn btn-warning btn-xs disabled" onclick="return confirm('¿Estas seguro de terminar esta actividad?')">Terminar</a> @else
+              <a href="{{url('terminate')}}/{{$element->id}}" class="btn btn-warning btn-xs" onclick="return confirm('¿Estas seguro de terminar esta actividad?')">Terminar</a> @endif
               <button class="btn btn-success btn-xs" type="button" name="button">Tiempo transcurrido: {{ Date::parse($element->created_at)->ago()}}</button>
             </div>
           </div>

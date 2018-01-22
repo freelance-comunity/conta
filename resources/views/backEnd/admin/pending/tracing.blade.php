@@ -23,8 +23,7 @@
         <input type="hidden" name="pending_id" value="{{$pending->id}}">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button> {{-- <button type="button" class="btn btn-primary">Guardar</button> --}}
-        {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!} {!! Form::close()
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button> {{-- <button type="button" class="btn btn-primary">Guardar</button> --}} {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!} {!! Form::close()
         !!}
       </div>
     </div>

@@ -39,7 +39,9 @@ class PendingController extends Controller
     {
         //$peoples = Person::pluck(['name', 'last_name'], 'id');
         $peoples = Person::select(
-            DB::raw("CONCAT(name,' ',last_name) AS name"),'id')
+            DB::raw("CONCAT(name,' ',last_name) AS name"),
+            'id'
+        )
             ->pluck('name', 'id');
 
         return view('backEnd.admin.pending.create')
@@ -94,7 +96,9 @@ class PendingController extends Controller
     {
         $pending = Pending::findOrFail($id);
         $peoples = Person::select(
-            DB::raw("CONCAT(name,' ',last_name) AS name"),'id')
+            DB::raw("CONCAT(name,' ',last_name) AS name"),
+            'id'
+        )
             ->pluck('name', 'id');
         return view('backEnd.admin.pending.edit', compact('pending', 'peoples'));
     }
@@ -138,4 +142,15 @@ class PendingController extends Controller
         return redirect('admin/pending');
     }
 
+    public function terminatePending($id)
+    {
+      $pending = Pending::findOrFail($id);
+      $pending->status = 'TERMINADO';
+      $pending->save();
+
+      Session::flash('message', 'Caso terminado.');
+      Session::flash('status', 'success');
+
+      return redirect()->back();
+    }
 }
