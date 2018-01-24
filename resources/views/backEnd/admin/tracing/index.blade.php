@@ -19,7 +19,7 @@ Tracing
                     <td>{{ $item->id }}</td>
                     <td><a href="{{ url('admin/tracing', $item->id) }}">{{ $item->body }}</a></td><td>{{ $item->people }}</td><td>{{ $item->type }}</td>
                     <td>
-                        <a href="{{ url('admin/tracing/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Update</a> 
+                        <a href="{{ url('admin/tracing/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Update</a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['admin/tracing', $item->id],
@@ -40,6 +40,9 @@ Tracing
 <script type="text/javascript">
     $(document).ready(function(){
         $('#tbladmin/tracing').DataTable({
+          "language": {
+             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+           },
             columnDefs: [{
                 targets: [0],
                 visible: false,

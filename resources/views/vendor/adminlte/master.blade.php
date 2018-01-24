@@ -27,6 +27,7 @@
         <!-- DataTables -->
         {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"> --}}
         <link rel="stylesheet" href="{{ asset('vendor/adminlte/datatables/jquery.dataTables.min.css') }}">
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
     @endif
 
     @yield('adminlte_css')
