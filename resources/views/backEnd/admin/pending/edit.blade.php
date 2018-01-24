@@ -20,14 +20,22 @@ Editar Caso
                 <div class="form-group {{ $errors->has('owner') ? 'has-error' : ''}}">
                 {!! Form::label('owner', 'Caso de: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('owner', null, ['class' => 'form-control', 'required' => 'required', 'readonly']) !!}
-                    {!! $errors->first('owner', '<p class="help-block">:message</p>') !!}
+                  {{-- {!! Form::select('owner', $peoples,null, ['class' => 'form-control input-lg', 'required' => 'required']) !!} --}}
+                  <select class="form-control input-lg" name="owner">
+                    @if ($peoples->count())
+                        @foreach($peoples as $people)
+                          <option value="{{ $people->id }}" {{ $selectedPeople == $people->id ? 'selected="selected"' : '' }}>{{ $people->name }} {{$people->last_name}}</option>
+                        @endforeach
+                    @endif
+                  </select>
+                  {!! $errors->first('owner', '
+                  <p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('affair') ? 'has-error' : ''}}">
                 {!! Form::label('affair', 'Asunto: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('affair', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    {!! Form::text('affair', null, ['class' => 'form-control input-lg', 'required' => 'required']) !!}
                     {!! $errors->first('affair', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

@@ -119,4 +119,11 @@ class PeopleController extends Controller
         return redirect('admin/people');
     }
 
+    public function single($id)
+    {
+      $person = Person::findOrFail($id);
+      $pending = $person->pendings;
+
+      return view('backEnd.admin.pending.single', compact('pending'));
+    }
 }

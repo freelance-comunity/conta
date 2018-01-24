@@ -33,12 +33,15 @@ class HomeController extends Controller
         $pendings = Pending::where('status', 'EN PROCESO');
         $terminates = Pending::where('status', 'TERMINADO');
         $activities = Activity::users()->get();
+        $all = Pending::all();
+        $lasts = $all->last();
 
         return view('home')
         ->with('users', $users)
         ->with('pendings', $pendings)
         ->with('terminates', $terminates)
-         ->with('activities', $activities);
+        ->with('activities', $activities)
+        ->with('lasts', $lasts);
     }
 
     public function calendar()

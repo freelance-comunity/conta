@@ -60,7 +60,7 @@ class PendingController extends Controller
         $people = Person::findOrFail($request->input('owner'));
         $input = $request->all();
         $input['owner'] = $people->name.' '.$people->last_name;
-        $input['people_id'] = $people->id;
+        $input['person_id'] = $people->id;
 
         Pending::create($input);
 
@@ -96,12 +96,10 @@ class PendingController extends Controller
     public function edit($id)
     {
         $pending = Pending::findOrFail($id);
-        $peoples = Person::select(
-            DB::raw("CONCAT(name,' ',last_name) AS name"),
-            'id'
-        )
-            ->pluck('name', 'id');
-        return view('backEnd.admin.pending.edit', compact('pending', 'peoples'));
+        $peoples = Person::all();
+        $selectedPeople = $pending->person_id;
+
+        return view('backEnd.admin.pending.edit', compact('pending', 'peoples', 'selectedPeople'));
     }
 
     /**
@@ -116,7 +114,11 @@ class PendingController extends Controller
         $this->validate($request, ['owner' => 'required', 'affair' => 'required', ]);
 
         $pending = Pending::findOrFail($id);
-        $pending->update($request->all());
+        $people = Person::findOrFail($request->input('owner'));
+        $input = $request->all();
+        $input['owner'] = $people->name.' '.$people->last_name;
+        $input['person_id'] = $people->id;
+        $pending->update($input);
 
         Session::flash('message', 'Caso actualizado.');
         Session::flash('status', 'success');
@@ -145,8 +147,10 @@ class PendingController extends Controller
 
     public function terminatePending($id)
     {
+        $end_date = Carbon::now();
         $pending = Pending::findOrFail($id);
         $pending->status = 'TERMINADO';
+        $pending->end_date = $end_date;
         $pending->save();
 
         Session::flash('message', 'Caso terminado.');
@@ -162,5 +166,19 @@ class PendingController extends Controller
 
         $pdf = PDF::loadView('backEnd.admin.pending.pdf', compact('pending', 'tracings'))->setPaper('a4', 'landscape');
         return $pdf->download('reporte.pdf');
+    }
+
+    public function process()
+    {
+      $pending = DB::table('pendings')->where('status', '=', 'EN PROCESO')->get();
+
+      return view('backEnd.admin.pending.process', compact('pending'));
+    }
+
+    public function terminate()
+    {
+      $pending = DB::table('pendings')->where('status', '=', 'TERMINADO')->get();
+
+      return view('backEnd.admin.pending.terminate', compact('pending'));
     }
 }

@@ -17,8 +17,9 @@ class CreatePendingsTable extends Migration
             $table->string('owner');
             $table->string('affair');
             $table->string('status')->default('EN PROCESO');
-            $table->integer('people_id')->unsigned();
-			      $table->foreign('people_id')->references('id')->on('people')->onDelete('cascade');
+            $table->date('end_date')->nullable();
+            $table->integer('person_id')->unsigned();
+			      $table->foreign('person_id')->references('id')->on('people')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();

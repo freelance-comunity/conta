@@ -26,7 +26,7 @@
           @foreach($pending as $item)
           <tr>
             <td>{{ $item->id }}</td>
-            <td><a href="{{ url('admin/single', $item->person_id) }}">{{ $item->owner }}</a></td>
+            <td><b>{{ $item->owner }}</b></td>
             <td>{{ $item->affair }}</td>
             <td>{{ $item->status }}</td>
             @if ($item->status === 'TERMINADO')

@@ -20,7 +20,7 @@ class Pending extends Model
      *
      * @var array
      */
-    protected $fillable = ['owner', 'affair', 'status', 'people_id'];
+    protected $fillable = ['owner', 'affair', 'status', 'end_date', 'person_id'];
 
     use SoftDeletes;
     protected $dates = ['deleted_at'];

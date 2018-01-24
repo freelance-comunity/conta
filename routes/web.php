@@ -38,12 +38,15 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('admin/people', 'Admin\\PeopleController');
+  Route::get('admin/single/{id}', 'Admin\\PeopleController@single');
 });
 
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('admin/pending', 'Admin\\PendingController');
   Route::get('terminatePending/{id}', 'Admin\\PendingController@terminatePending');
   Route::get('pdf/{id}', 'Admin\\PendingController@pdf');
+  Route::get('admin/process', 'Admin\\PendingController@process');
+  Route::get('admin/terminate', 'Admin\\PendingController@terminate');
 });
 Route::group(['middleware' => ['web']], function () {
 	Route::resource('admin/tracing', 'Admin\\TracingController');
