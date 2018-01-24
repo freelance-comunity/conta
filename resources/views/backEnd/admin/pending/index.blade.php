@@ -15,40 +15,23 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Caso de</th>
-            <th>Asunto</th>
-            <th>Estatus</th>
-            <th>Duración</th>
-            <th>Detalles</th>
+            <th>Nombre(s)</th>
+            <th>Apellidos</th>
+            <th>Teléfono</th>
+            <th>Casos</th>
           </tr>
         </thead>
         <tbody>
-          @foreach($pending as $item)
+          @foreach($persons as $item)
+          @php
+            $pendings = $item->pendings;
+          @endphp
           <tr>
             <td>{{ $item->id }}</td>
-            <td><a href="{{ url('admin/single', $item->person_id) }}">{{ $item->owner }}</a></td>
-            <td>{{ $item->affair }}</td>
-            <td>{{ $item->status }}</td>
-            @if ($item->status === 'TERMINADO')
-              @php
-              $to = Carbon\Carbon::parse($item->created_at);
-              $from = Carbon\Carbon::parse($item->end_date);
-              $diff_in_days = $to->diffInDays($from);
-              @endphp
-              <td>{{ $diff_in_days}} días</td>
-            @else
-            <td>El caso aún no termina</td>
-            @endif
-            <td>
-              @can ('editar_casos')
-                <a href="{{ url('admin/pending/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs">Actualizar</a>
-              @endcan
-              @can ('eliminar_casos')
-                {!! Form::open([ 'method'=>'DELETE', 'url' => ['admin/pending', $item->id], 'style' => 'display:inline' ]) !!} {!! Form::submit('Eliminar',
-               ['class' => 'btn btn-danger btn-xs', 'onclick'=>'return confirm("¿Estas seguro de eliminar este registro?")']) !!} {!! Form::close() !!}
-              @endcan
-              <a href="{{ url('admin/pending', $item->id) }}" class="btn btn-success btn-xs">Ver</a>
-            </td>
+            <td><a href="{{ url('admin/single', $item->id) }}">{{ $item->name }}</a></td>
+            <td>{{ $item->last_name }}</td>
+            <td>{{ $item->phone }}</td>
+            <td>{{$pendings->count()}}</td>
           </tr>
           @endforeach
         </tbody>

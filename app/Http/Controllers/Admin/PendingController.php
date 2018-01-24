@@ -27,8 +27,9 @@ class PendingController extends Controller
     public function index()
     {
         $pending = Pending::all();
+        $persons = Person::all();
 
-        return view('backEnd.admin.pending.index', compact('pending'));
+        return view('backEnd.admin.pending.index', compact('pending', 'persons'));
     }
 
     /**
