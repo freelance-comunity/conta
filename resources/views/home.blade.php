@@ -76,6 +76,9 @@
     <!--/.box -->
   </div>
   <!-- /.col -->
+  @if ($lasts->isEmpty())
+  <div class="well text-center">No hay casos registrados.</div>
+  @else
   <div class="col-md-6">
     <div class="box box-primary">
       <div class="box-header with-border">
@@ -116,5 +119,6 @@
     </div>
     <!-- /.box -->
   </div>
+  @endif
 </div>
 @stop
